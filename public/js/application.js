@@ -19,11 +19,10 @@ $(document).ready(function() {
 
   $('.row').on("click", function(){
     // need to replace way of collecting group - only adds to group if clicked above the target, but not on the target
-
-    vertGroup = $(this).nextAll()
-    // console.log(vertGroup);
+    clickLocation = $(event.target);
+    vertGroup = $(currentColumn(clickLocation)).children();
+    console.log(vertGroup);
     vertColorsArray = []
-    console.log($(event.target));
 
     for(var i=0; i < vertGroup.length; i++) {
       vertColorsArray.push(vertGroup[i].classList[2]);
@@ -70,7 +69,7 @@ $(document).ready(function() {
     target.removeClass("empty");
     target.addClass(currentPlayer);
     target.css({"background-color": currentPlayer});
-    console.log(target);
+    // console.log(target);
 
 
     if(click_counter > 42) {
