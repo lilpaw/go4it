@@ -10,19 +10,42 @@ $(document).ready(function() {
 
   $('.container').on("click", '.col', function(event){
     clickLocation = $(event.target);
+    currentTarget = $(currentColumn(clickLocation) + " div.empty").last();
     addClickCounter();
     notifyPlayerTurn();
     addPieceToColumn();
     verticalCheck();
+    horizontalCheck();
   });
+
+  //check for horizontal winner
+
+  var horizontalCheck = function() {
+    horizGroup = $(targetRow(currentTarget));
+    // console.log(horizGroup);
+    horizColorsArray = []
+
+    for(var i=0; i < horizGroup.length; i++) {
+      horizColorsArray.push(horizGroup[i].classList[2]);
+    };
+
+    var horizColorsString = horizColorsArray.join('');
+      blkWin = (/blackblackblackblack/)
+      redWin = (/redredredred/)
+
+    if(blkWin.test(horizColorsString) === true || redWin.test(horizColorsString) === true) {
+        alert(currentPlayer + " is a winner! Moop Moop!")
+    };
+
+  };
 
   //check for vertical winner
 
   var verticalCheck = function(){
     // need to replace way of collecting group - only adds to group if clicked above the target, but not on the target
-    clickLocation = $(event.target);
+
     vertGroup = $(currentColumn(clickLocation)).children();
-    console.log(vertGroup);
+    // console.log(vertGroup);
     vertColorsArray = []
 
     for(var i=0; i < vertGroup.length; i++) {
