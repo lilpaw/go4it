@@ -13,11 +13,12 @@ $(document).ready(function() {
     addClickCounter();
     notifyPlayerTurn();
     addPieceToColumn();
+    verticalCheck();
   });
 
   //check for vertical winner
 
-  $('.row').on("click", function(){
+  var verticalCheck = function(){
     // need to replace way of collecting group - only adds to group if clicked above the target, but not on the target
     clickLocation = $(event.target);
     vertGroup = $(currentColumn(clickLocation)).children();
@@ -36,7 +37,7 @@ $(document).ready(function() {
     if(blkWin.test(vertColorsString) === true || redWin.test(vertColorsString) === true) {
         alert(currentPlayer + " is a winner! Moop Moop!")
     };
-  });
+  };
 
   var addClickCounter = function(){
     click_counter ++;
