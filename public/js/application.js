@@ -18,6 +18,12 @@ $(document).ready(function() {
     horizontalCheck();
   });
 
+  //check for diagonal winner
+
+  var diagonalCheck = function() {
+
+  };
+
   //check for horizontal winner
 
   var horizontalCheck = function() {
