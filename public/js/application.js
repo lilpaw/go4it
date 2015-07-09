@@ -15,19 +15,27 @@ $(document).ready(function() {
     addPieceToColumn();
   });
 
+  //check for vertical winner
+
   $('.row').on("click", function(){
-    group = $(this).nextAll()
-    arr = []
-    for(var i=0; i < group.length; i++) {
-      arr.push(group[i].classList[2])
+    // need to replace way of collecting group - only adds to group if clicked above the target, but not on the target
+
+    vertGroup = $(this).nextAll()
+    // console.log(vertGroup);
+    vertColorsArray = []
+    console.log($(event.target));
+
+    for(var i=0; i < vertGroup.length; i++) {
+      vertColorsArray.push(vertGroup[i].classList[2]);
+      // console.log(vertColorsArray);
     };
 
-    var vertWin = arr.join('');
+    var vertColorsString = vertColorsArray.join('');
       blkWin = (/blackblackblackblack/)
       redWin = (/redredredred/)
 
-    if(blkWin.test(vertWin) === true || redWin.test(vertWin) === true) {
-        alert("You're a winner! Moop Moop!")
+    if(blkWin.test(vertColorsString) === true || redWin.test(vertColorsString) === true) {
+        alert(currentPlayer + " is a winner! Moop Moop!")
     };
   });
 
@@ -56,7 +64,6 @@ $(document).ready(function() {
 
   var addPieceToColumn = function(){
     var columnName = currentColumn(clickLocation);
-    console.log(columnName);
     // set player colors
 
     var target = $(columnName + " div.empty").last();
