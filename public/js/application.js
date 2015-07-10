@@ -10,20 +10,142 @@ $(document).ready(function() {
 
   $('.container').on("click", '.col', function(event){
     clickLocation = $(event.target);
-    currentTarget = $(currentColumn(clickLocation) + " div.empty").last();
+    currentTarget = $("#" + currentColumn(clickLocation) + " div.empty").last();
     addClickCounter();
     notifyPlayerTurn();
     addPieceToColumn();
     verticalCheck();
     horizontalCheck();
+    diagonalCheck();
   });
+
+  //check for diagonal winner
+
+  var diagonalCheck = function() {
+    var columnStart = Number(currentColumn(clickLocation))
+    var rowStart = Number(targetRow(currentTarget))
+    var diag1ColorsArray = []
+    var diag2ColorsArray = []
+    var diagGroup1 = []
+    var diagGroup2 = []
+
+// add spaces to array to check for diagonal wins
+    if(columnStart === 1) {
+      diagGroup1.push($("#" + columnStart + " ." + rowStart))
+      diagGroup1.push($("#" + (columnStart + 1) + " ." + (rowStart - 1)))
+      diagGroup1.push($("#" + (columnStart + 2) + " ." + (rowStart - 2)))
+      diagGroup1.push($("#" + (columnStart + 3) + " ." + (rowStart - 3)))
+      diagGroup2.push($("#" + columnStart + " ." + rowStart))
+      diagGroup2.push($("#" + (columnStart + 1) + " ." + (rowStart + 1)))
+      diagGroup2.push($("#" + (columnStart + 2) + " ." + (rowStart + 2)))
+      diagGroup2.push($("#" + (columnStart + 3) + " ." + (rowStart + 3)))
+    }else if(columnStart === 2) {
+      diagGroup1.push($("#" + (columnStart - 1) + " ." + (rowStart + 1)))
+      diagGroup1.push($("#" + columnStart + " ." + rowStart))
+      diagGroup1.push($("#" + (columnStart + 1) + " ." + (rowStart - 1)))
+      diagGroup1.push($("#" + (columnStart + 2) + " ." + (rowStart - 2)))
+      diagGroup1.push($("#" + (columnStart + 3) + " ." + (rowStart - 3)))
+      diagGroup2.push($("#" + (columnStart - 1) + " ." + (rowStart - 1)))
+      diagGroup2.push($("#" + columnStart + " ." + rowStart))
+      diagGroup2.push($("#" + (columnStart + 1) + " ." + (rowStart + 1)))
+      diagGroup2.push($("#" + (columnStart + 2) + " ." + (rowStart + 2)))
+      diagGroup2.push($("#" + (columnStart + 3) + " ." + (rowStart + 3)))
+    }else if(columnStart === 3) {
+      diagGroup1.push($("#" + (columnStart - 2) + " ." + (rowStart + 2)))
+      diagGroup1.push($("#" + (columnStart - 1) + " ." + (rowStart + 1)))
+      diagGroup1.push($("#" + columnStart + " ." + rowStart))
+      diagGroup1.push($("#" + (columnStart + 1) + " ." + (rowStart - 1)))
+      diagGroup1.push($("#" + (columnStart + 2) + " ." + (rowStart - 2)))
+      diagGroup1.push($("#" + (columnStart + 3) + " ." + (rowStart - 3)))
+      diagGroup2.push($("#" + (columnStart - 2) + " ." + (rowStart - 2)))
+      diagGroup2.push($("#" + (columnStart - 1) + " ." + (rowStart - 1)))
+      diagGroup2.push($("#" + columnStart + " ." + rowStart))
+      diagGroup2.push($("#" + (columnStart + 1) + " ." + (rowStart + 1)))
+      diagGroup2.push($("#" + (columnStart + 2) + " ." + (rowStart + 2)))
+      diagGroup2.push($("#" + (columnStart + 3) + " ." + (rowStart + 3)))
+    }else if(columnStart === 4) {
+      diagGroup1.push($("#" + (columnStart - 3) + " ." + (rowStart + 3)))
+      diagGroup1.push($("#" + (columnStart - 2) + " ." + (rowStart + 2)))
+      diagGroup1.push($("#" + (columnStart - 1) + " ." + (rowStart + 1)))
+      diagGroup1.push($("#" + columnStart + " ." + rowStart))
+      diagGroup1.push($("#" + (columnStart + 1) + " ." + (rowStart - 1)))
+      diagGroup1.push($("#" + (columnStart + 2) + " ." + (rowStart - 2)))
+      diagGroup1.push($("#" + (columnStart + 3) + " ." + (rowStart - 3)))
+      diagGroup2.push($("#" + (columnStart - 3) + " ." + (rowStart - 3)))
+      diagGroup2.push($("#" + (columnStart - 2) + " ." + (rowStart - 2)))
+      diagGroup2.push($("#" + (columnStart - 1) + " ." + (rowStart - 1)))
+      diagGroup2.push($("#" + columnStart + " ." + rowStart))
+      diagGroup2.push($("#" + (columnStart + 1) + " ." + (rowStart + 1)))
+      diagGroup2.push($("#" + (columnStart + 2) + " ." + (rowStart + 2)))
+      diagGroup2.push($("#" + (columnStart + 3) + " ." + (rowStart + 3)))
+    }else if(columnStart === 5) {
+      diagGroup1.push($("#" + (columnStart - 3) + " ." + (rowStart + 3)))
+      diagGroup1.push($("#" + (columnStart - 2) + " ." + (rowStart + 2)))
+      diagGroup1.push($("#" + (columnStart - 1) + " ." + (rowStart + 1)))
+      diagGroup1.push($("#" + columnStart + " ." + rowStart))
+      diagGroup1.push($("#" + (columnStart + 1) + " ." + (rowStart - 1)))
+      diagGroup1.push($("#" + (columnStart + 2) + " ." + (rowStart - 2)))
+      diagGroup2.push($("#" + (columnStart - 3) + " ." + (rowStart - 3)))
+      diagGroup2.push($("#" + (columnStart - 2) + " ." + (rowStart - 2)))
+      diagGroup2.push($("#" + (columnStart - 1) + " ." + (rowStart - 1)))
+      diagGroup2.push($("#" + columnStart + " ." + rowStart))
+      diagGroup2.push($("#" + (columnStart + 1) + " ." + (rowStart + 1)))
+      diagGroup2.push($("#" + (columnStart + 2) + " ." + (rowStart + 2)))
+    }else if(columnStart === 6) {
+      diagGroup1.push($("#" + (columnStart - 3) + " ." + (rowStart + 3)))
+      diagGroup1.push($("#" + (columnStart - 2) + " ." + (rowStart + 2)))
+      diagGroup1.push($("#" + (columnStart - 1) + " ." + (rowStart + 1)))
+      diagGroup1.push($("#" + columnStart + " ." + rowStart))
+      diagGroup1.push($("#" + (columnStart + 1) + " ." + (rowStart - 1)))
+      diagGroup2.push($("#" + (columnStart - 3) + " ." + (rowStart - 3)))
+      diagGroup2.push($("#" + (columnStart - 2) + " ." + (rowStart - 2)))
+      diagGroup2.push($("#" + (columnStart - 1) + " ." + (rowStart - 1)))
+      diagGroup2.push($("#" + columnStart + " ." + rowStart))
+      diagGroup2.push($("#" + (columnStart + 1) + " ." + (rowStart + 1)))
+    }else if(columnStart === 7){
+      diagGroup1.push($("#" + (columnStart - 3) + " ." + (rowStart + 3)))
+      diagGroup1.push($("#" + (columnStart - 2) + " ." + (rowStart + 2)))
+      diagGroup1.push($("#" + (columnStart - 1) + " ." + (rowStart + 1)))
+      diagGroup1.push($("#" + columnStart + " ." + rowStart))
+      diagGroup2.push($("#" + (columnStart - 3) + " ." + (rowStart - 3)))
+      diagGroup2.push($("#" + (columnStart - 2) + " ." + (rowStart - 2)))
+      diagGroup2.push($("#" + (columnStart - 1) + " ." + (rowStart - 1)))
+      diagGroup2.push($("#" + columnStart + " ." + rowStart))
+    };
+    console.log(diagGroup1);
+    console.log(diagGroup2);
+    for(var i=0; i < diagGroup1.length; i++){
+      currentClasswithinGroup = diagGroup1[i][0]
+      if(currentClasswithinGroup){
+        diag1ColorsArray.push(diagGroup1[i][0].classList[2])
+      };
+    };
+
+    for(var i=0; i < diagGroup2.length; i++){
+      currentClasswithinGroup = diagGroup2[i][0]
+      if(currentClasswithinGroup){
+        diag2ColorsArray.push(diagGroup2[i][0].classList[2])
+      };
+    };
+
+    var diag1ColorsString = diag1ColorsArray.join('');
+    var diag2ColorsString = diag2ColorsArray.join('');
+      blkWin = (/blackblackblackblack/)
+      redWin = (/redredredred/)
+
+    if(blkWin.test(diag1ColorsString) === true || blkWin.test(diag2ColorsString) === true || redWin.test(diag1ColorsString) === true || redWin.test(diag2ColorsString) === true) {
+      alert(currentPlayer + " is a winner! Moop Moop!")
+    };
+
+
+  };
 
   //check for horizontal winner
 
   var horizontalCheck = function() {
-    horizGroup = $(targetRow(currentTarget));
+    var horizGroup = $("." + targetRow(currentTarget));
     // console.log(horizGroup);
-    horizColorsArray = []
+    var horizColorsArray = []
 
     for(var i=0; i < horizGroup.length; i++) {
       horizColorsArray.push(horizGroup[i].classList[2]);
@@ -44,7 +166,7 @@ $(document).ready(function() {
   var verticalCheck = function(){
     // need to replace way of collecting group - only adds to group if clicked above the target, but not on the target
 
-    vertGroup = $(currentColumn(clickLocation)).children();
+    vertGroup = $("#"+ currentColumn(clickLocation)).children();
     // console.log(vertGroup);
     vertColorsArray = []
 
@@ -89,7 +211,7 @@ $(document).ready(function() {
     var columnName = currentColumn(clickLocation);
     // set player colors
 
-    var target = $(columnName + " div.empty").last();
+    var target = $("#" + columnName + " div.empty").last();
     target.removeClass("empty");
     target.addClass(currentPlayer);
     target.css({"background-color": currentPlayer});
