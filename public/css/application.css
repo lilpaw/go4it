@@ -4,6 +4,7 @@
   position: relative; /*to remove flexbox*/
   margin: 10px;
   background-image: url('http://p1.pichost.me/i/66/1903434.jpg');
+  background-repeat: repeat; /* not sure why not repeating */
 }
 
 .col {
@@ -16,8 +17,9 @@
 }
 
 .row {
-  border: 1px solid orange;
+  /*border: 1px red;*/
   height: 100px;
+  /*margin: 10px;*/
 }
 
 .p1 {
@@ -58,8 +60,9 @@ img {
   flex-direction: column;*/
   /*justify-content: center;*/
   float: right;
-  width: 50%;
-  position: absolute;
+/*  width: 50%;*/
+  margin-right: 40px;
+
 }
 
 .logo > img {
