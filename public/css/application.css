@@ -1,21 +1,25 @@
 .container {
   background-color: orange;
-  display: flex;
+  /*display: flex;*/
+  position: relative; /*to remove flexbox*/
   margin: 10px;
   background-image: url('http://p1.pichost.me/i/66/1903434.jpg');
+  background-repeat: repeat; /* not sure why not repeating */
 }
 
 .col {
   background-color: orange;
   /*opacity: 0.7;*/
-  display: flex;
-  flex-direction: column;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  display: inline-block; /*to remove flexbox*/
   width: 100px;
 }
 
 .row {
-  border: 1px solid orange;
+  /*border: 1px red;*/
   height: 100px;
+  /*margin: 10px;*/
 }
 
 .p1 {
@@ -51,11 +55,14 @@ img {
 }
 
 .logo {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 50%;
+  /*align-items: center*/;
+  /*display: flex;
+  flex-direction: column;*/
+  /*justify-content: center;*/
+  float: right;
+/*  width: 50%;*/
+  margin-right: 40px;
+
 }
 
 .logo > img {

@@ -1,3 +1,42 @@
+Pseudo for removing Flexbox
+--------------
+
+  <div class="container">
+    <% a = *(1..6) %>
+    <% a.reverse.each do |i| %>
+      <div class="column_1 row_<%=i%>"></div>
+      <div class="column_2 row_<%=i%>"></div>
+      <div class="column_3 row_<%=i%>"></div>
+      <div class="column_4 row_<%=i%>"></div>
+      <div class="column_5 row_<%=i%>"></div>
+      <div class="column_6 row_<%=i%>"></div>
+      <div class="column_7 row_<%=i%>"></div>
+    <% end %>
+
+  </div>
+  ------------
+.container {
+  border: 1px solid black;
+  text-align: center;
+  background-color: orange;
+  width: 700px;
+  height: 600px;
+  padding-top: 20px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.container div {
+  display: inline-block;
+  width: 90px;
+  border: 1px solid black;
+  height: 90px;
+  background-color: #CBD2EA;
+  border-radius: 100%;
+}
+
+
+
 Pseudo for a winner
 
 WHAT IS YOUR STATE?
