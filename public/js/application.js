@@ -150,7 +150,9 @@ $(document).ready(function() {
       redWin = (/redredredred/)
 
     if(blkWin.test(diag1ColorsString) === true || blkWin.test(diag2ColorsString) === true || redWin.test(diag1ColorsString) === true || redWin.test(diag2ColorsString) === true) {
-      alert(currentPlayer + " is a winner! Moop Moop!")
+      alert("Congrats! " + currentPlayer + " is the winner!");
+      location.reload();
+
     };
 
 
@@ -172,7 +174,8 @@ $(document).ready(function() {
       redWin = (/redredredred/)
 
     if(blkWin.test(horizColorsString) === true || redWin.test(horizColorsString) === true) {
-        alert(currentPlayer + " is a winner! Moop Moop!")
+        alert("Congrats! " + currentPlayer + " is the winner!");
+        location.reload();
     };
 
   };
@@ -196,7 +199,8 @@ $(document).ready(function() {
       redWin = (/redredredred/)
 
     if(blkWin.test(vertColorsString) === true || redWin.test(vertColorsString) === true) {
-        alert(currentPlayer + " is a winner! Moop Moop!")
+        alert("Congrats! " + currentPlayer + " is the winner!");
+        window.location.reload();
     };
   };
 
