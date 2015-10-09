@@ -11,6 +11,7 @@ $(document).ready(function() {
   $('.container').on("click", '.col', function(event){
     clickLocation = $(event.target);
     currentTarget = $("#" + currentColumn(clickLocation) + " div.empty").last();
+    illegalClick();
     addClickCounter();
     notifyPlayerTurn();
     addPieceToColumn();
@@ -18,6 +19,13 @@ $(document).ready(function() {
     horizontalCheck();
     diagonalCheck();
   });
+
+  //alert if click didn't register correctly
+  var illegalClick = function() {
+    if(currentTarget.length <= 0) {
+      alert("Oops! Only click in the white, please!")
+    };
+  };
 
   //check for diagonal winner
 
